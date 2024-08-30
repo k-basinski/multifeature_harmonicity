@@ -14,16 +14,15 @@ from psychopy.hardware import keyboard
 prefs.hardware["audioLib"] = ["PTB"]
 prefs.hardware["audioLatencyMode"] = 5
 
-import os
+
 import serial
-from math import floor
+
 import numpy as np
-from os import listdir
-from utilities import generate_stim_list, calculate_stim_count
+
 
 # Config
-send_triggers = True
-pool_dir = 'sound_pool_multifeature'
+send_triggers = False
+pool_dir = 'soundpool'
 logging = True
 
 # get subject info:
@@ -151,20 +150,25 @@ def play_sound(sound: object):
     sound.play(when=next_flip)
 
 
-def flip_screen(times: int = 1):
+def flip_screen(times: int = 1, window_elements=None):
     """
     Flips the screen a specified number of times.
 
     Parameters:
-    times (int): The number of times to flip the screen. Default is 1.
+        times (int): The number of times to flip the screen. Default is 1.
+        window_elements (dict): A dictionary of window objects to show.
     """
     for _ in range(times):
+        for _, v in window_elements.items():
+            v.draw()
         win.flip()
+
 
 def quit_exp():
     win.close()
     # logging.flush()
     core.quit()
+
 
 def insert_cross():
     stname_screen = visual.TextStim(win, text="+", color="white", height=0.2)
@@ -286,8 +290,8 @@ for i in range(1000):
     trigger_pool[f'ih_int_neg_{i}'] = 13
     trigger_pool[f'ih_loc_pos_{i}'] = 14
     trigger_pool[f'ih_loc_neg_{i}'] = 15
-    trigger_pool[f'in_pitch_pos_{i}'] = 16
-    trigger_pool[f'in_pitch_neg_{i}'] = 17
+    trigger_pool[f'ih_pitch_pos_{i}'] = 16
+    trigger_pool[f'ih_pitch_neg_{i}'] = 17
 
 
 # %%
