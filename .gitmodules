@@ -1,0 +1,3 @@
+[submodule "paradigm/inharmonicon"]
+	path = paradigm/inharmonicon
+	url = https://github.com/k-basinski/inharmonicon
