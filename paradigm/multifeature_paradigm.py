@@ -24,6 +24,7 @@ import numpy as np
 send_triggers = False
 pool_dir = 'soundpool'
 logging = True
+ioi = .6 # interonset interval in seconds
 
 # get subject info:
 ID_box = gui.Dlg(title="Subject identity")
@@ -96,6 +97,12 @@ def send_trigger(port, value):
 def concatenate_integers(a, b):
     return int(f"{a}{b}") #could be also aritmetic solution that is a*10+b
 
+def calculate_interonset_frames(ioi: float):
+    """Get number of frames to flip for a given IOI.
+    """
+    return int(120 * ioi) - 1
+
+
 def play_sound_from_dict(stim_list: list, sound_pool: dict, block_id):
     """
     Play sounds from a list of stimuli using a dictionary of sounds.
@@ -127,7 +134,7 @@ def play_sound_from_dict(stim_list: list, sound_pool: dict, block_id):
 
             count += 1
 
-            flip_screen(59, window_elements)
+            flip_screen(calculate_interonset_frames(ioi), window_elements)
 
         else:
             print(f"Unknown stimulus: {stim}")
