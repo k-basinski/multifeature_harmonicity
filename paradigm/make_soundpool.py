@@ -1,5 +1,5 @@
 import numpy as np
-import inharmonicon as inharm
+import inharmonicon.inharmonicon as inharm
 from progress.bar import Bar
 
 # stimulus length in seconds
@@ -12,7 +12,7 @@ jr = 0.1
 no_inharmonic_sounds = 1000
 
 # filepath to save output
-fpath = 'sound_pool_multifeature/'
+fpath = 'soundpool/'
 
 # make harmonic sounds
 print("Generating harmonic sounds...")
@@ -37,7 +37,7 @@ harm_pitch_neg.save(fpath + 'harm_pitch_neg.wav')
 # intensity oddballs
 harm_int_pos = inharm.Sound(f=hs_std, length=stim_length)
 harm_int_pos.adjust_volume(+10)
-harm_int_pos.save(fpath + 'harm_pitch_pos.wav')
+harm_int_pos.save(fpath + 'harm_int_pos.wav')
 
 harm_int_neg = inharm.Sound(f=hs_std, length=stim_length)
 harm_int_neg.adjust_volume(-10)
