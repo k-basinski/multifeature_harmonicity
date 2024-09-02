@@ -12,7 +12,7 @@
 from psychopy import visual, core, prefs, visual, sound, event, gui, logging
 from psychopy.hardware import keyboard
 prefs.hardware["audioLib"] = ["PTB"]
-prefs.hardware["audioLatencyMode"] = 5
+prefs.hardware["audioLatencyMode"] = 4
 
 
 import serial
