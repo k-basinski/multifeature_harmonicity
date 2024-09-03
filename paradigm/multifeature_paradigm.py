@@ -263,15 +263,13 @@ def make_inharmonic_deviants():
     deviants = [
         rng.choice([f'ih_pitch_neg_{randints[0]}', f'ih_pitch_pos_{randints[0]}']),
         rng.choice([f'ih_loc_neg_{randints[1]}', f'ih_loc_pos_{randints[1]}']),
-        rng.choice([f'ih_int_neg_{randints[2]}', f'ih_int_pos_{randints[2]}']),
-        'omission',
-        'harm_std'
+        rng.choice([f'ih_int_neg_{randints[2]}', f'ih_int_pos_{randints[2]}'])
     ]
     
-    deviant_order = np.random.choice(deviants, 5, replace=False)
+    deviant_order = np.random.choice(deviants, 3, replace=False)
     
     sequence = []
-    for i in range(5):
+    for i in range(3):
         sequence.append(standards)
         sequence.append(deviant_order[i])
         
