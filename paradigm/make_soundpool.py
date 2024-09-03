@@ -40,9 +40,9 @@ fpath = 'soundpool/'
 print("Generating harmonic sounds...")
 
 # make harmonic series
-hs_std, hs_dev_pos, hs_dev_neg = (inharm.Harmonics(500, fmin=fmin, fmax=fmax),
-                                  inharm.Harmonics(550, fmin=fmin, fmax=fmax),
-                                  inharm.Harmonics(450, fmin=fmin, fmax=fmax)
+hs_std, hs_dev_pos, hs_dev_neg = (inharm.Harmonics(300, fmin=fmin, fmax=fmax),
+                                  inharm.Harmonics(350, fmin=fmin, fmax=fmax),
+                                  inharm.Harmonics(250, fmin=fmin, fmax=fmax)
                                   )
 
 # generate standard
@@ -89,10 +89,10 @@ harm_omission.save(fpath + 'omission.wav')
 print(f"Generating {no_inharmonic_sounds} sounds...")
 for i in Bar('Processing').iter(range(no_inharmonic_sounds)):
     # inharmonic series
-    series_std = inharm.Harmonics(500, jitter_rate=jr, fmin=fmin, fmax=fmax)
+    series_std = inharm.Harmonics(300, jitter_rate=jr, fmin=fmin, fmax=fmax)
     jit_factors = series_std.get_factors()
-    series_dev_pos = inharm.Harmonics(550, jitter_factors=jit_factors, fmin=fmin, fmax=fmax)
-    series_dev_neg = inharm.Harmonics(450, jitter_factors=jit_factors, fmin=fmin, fmax=fmax)
+    series_dev_pos = inharm.Harmonics(350, jitter_factors=jit_factors, fmin=fmin, fmax=fmax)
+    series_dev_neg = inharm.Harmonics(250, jitter_factors=jit_factors, fmin=fmin, fmax=fmax)
 
     # inharmonic standard
     son = inharm.Sound(series_std, length=stim_length)
