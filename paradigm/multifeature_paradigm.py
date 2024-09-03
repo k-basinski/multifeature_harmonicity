@@ -323,7 +323,7 @@ seq_harm = []
 seq_inharm = []
 seq_changing = []
 seq_inharm_dev = []
-total_sounds = 100
+total_sounds = 600
 num_sequences = total_sounds // 10            
 for _ in range(num_sequences):
     seq_harm += make_harmonic_seq()
