@@ -26,7 +26,7 @@ fmax = 100
 # filter specification
 filter_spec = {
     'freq': 3000,
-    'order': 2,
+    'order': 1,
     'type': 'lowpass'
 }
 
