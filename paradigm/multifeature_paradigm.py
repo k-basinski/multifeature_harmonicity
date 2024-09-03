@@ -97,6 +97,24 @@ def send_trigger(port, value):
 def concatenate_integers(a, b):
     return int(f"{a}{b}") #could be also aritmetic solution that is a*10+b
 
+def calculate_stim_count(block_length: int, ioi: float): 
+    """
+    Calculate the number of stimuli that can fit in a block.
+
+    This function calculates the number of stimuli that can fit in a block
+    based on the block length and the inter-onset interval (IOI).
+
+    Parameters:
+        block_length (int): The length of the block in seconds.
+        ioi (float): The inter-onset interval in seconds.
+
+    Returns:
+        int: The number of stimuli that can fit in the block.
+    """
+    from math import floor
+    s_count = floor(block_length / ioi) 
+    return s_count
+
 def calculate_interonset_frames(ioi: float):
     """Get number of frames to flip for a given IOI.
     """
