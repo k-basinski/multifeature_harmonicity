@@ -97,6 +97,24 @@ def send_trigger(port, value):
 def concatenate_integers(a, b):
     return int(f"{a}{b}") #could be also aritmetic solution that is a*10+b
 
+def calculate_stim_count(block_length: int, ioi: float): 
+    """
+    Calculate the number of stimuli that can fit in a block.
+
+    This function calculates the number of stimuli that can fit in a block
+    based on the block length and the inter-onset interval (IOI).
+
+    Parameters:
+        block_length (int): The length of the block in seconds.
+        ioi (float): The inter-onset interval in seconds.
+
+    Returns:
+        int: The number of stimuli that can fit in the block.
+    """
+    from math import floor
+    s_count = floor(block_length / ioi) 
+    return s_count
+
 def calculate_interonset_frames(ioi: float):
     """Get number of frames to flip for a given IOI.
     """
@@ -263,15 +281,13 @@ def make_inharmonic_deviants():
     deviants = [
         rng.choice([f'ih_pitch_neg_{randints[0]}', f'ih_pitch_pos_{randints[0]}']),
         rng.choice([f'ih_loc_neg_{randints[1]}', f'ih_loc_pos_{randints[1]}']),
-        rng.choice([f'ih_int_neg_{randints[2]}', f'ih_int_pos_{randints[2]}']),
-        'omission',
-        'harm_std'
+        rng.choice([f'ih_int_neg_{randints[2]}', f'ih_int_pos_{randints[2]}'])
     ]
     
-    deviant_order = np.random.choice(deviants, 5, replace=False)
+    deviant_order = np.random.choice(deviants, 3, replace=False)
     
     sequence = []
-    for i in range(5):
+    for i in range(3):
         sequence.append(standards)
         sequence.append(deviant_order[i])
         
