@@ -25,6 +25,7 @@ send_triggers = False
 pool_dir = 'soundpool'
 logging = True
 ioi = .6 # interonset interval in seconds
+full_screen = True
 
 # get subject info:
 ID_box = gui.Dlg(title="Subject identity")
@@ -34,7 +35,7 @@ ID_box.show()
 
 # create a window
 color = "white"
-win = visual.Window([800, 600], color="black")
+win = visual.Window([800, 600], color="black", fullscr=full_screen)
 
 window_elements = {}
 
